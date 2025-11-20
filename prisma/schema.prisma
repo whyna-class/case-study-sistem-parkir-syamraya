@@ -5,7 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client" // or `prisma-client-js`
+  output          = "../generated/prisma"
+  engineType      = "client" // enable Prisma ORM without Rust
 }
 
 datasource db {
@@ -21,7 +23,7 @@ enum jenisKendaraan {
 model Parkir {
   id               Int            @id @default(autoincrement())
   platNomor        String
-  jenisKendaraan   jenisKendaraan
+  jenisKendaraan   jenisKendaraan 
   durasi           Int
   total            Int
   createdAt        DateTime       @default(now())
